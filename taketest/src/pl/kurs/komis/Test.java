@@ -25,14 +25,14 @@ public static void main(String[] args) {
 	
 	// tworzenie zamowienia
 	
-	Order_ zamowienie = new Order_();
+	ClientOrder zamowienie = new ClientOrder();
 	zamowienie.setPrice(100);
 	//zamowienie.client = czeslaw;
 	
 	// tworzenie pozycji zamowienia
 	
-	Order_position pozycja_zamowienia = new Order_position();
-	pozycja_zamowienia.setQuantity(new Integer(1));
+	OrderPosition pozycjaZamowienia = new OrderPosition();
+	pozycjaZamowienia.setQuantity(new Integer(1));
 	
 	// tworzenie dania
 	
@@ -53,13 +53,13 @@ public static void main(String[] args) {
 	
 	// dodawanie tego wszystkiego do siebie
 	
-	pomidor._dish = pomidorowa;
+	pomidor.dish = pomidorowa;
 	
 	
 	pomidorowa.ingredient.addElement(kapusta);
-	pozycja_zamowienia.dish = pomidorowa;
-	pozycja_zamowienia.order = zamowienie;
-	czeslaw.order_.addElement(zamowienie);
+	pozycjaZamowienia.dish = pomidorowa;
+	pozycjaZamowienia.clientOrder = zamowienie;
+	czeslaw.clientOrder.addElement(zamowienie);
 	
 	// Zapis w bazie
 
@@ -67,7 +67,7 @@ public static void main(String[] args) {
 	manager.persist(ziemniaczki);
 	manager.persist(pomidorowa);
 	manager.persist(zamowienie);
-	manager.persist(pozycja_zamowienia);
+	manager.persist(pozycjaZamowienia);
 	//manager.persist(czeslaw);
 	
 	

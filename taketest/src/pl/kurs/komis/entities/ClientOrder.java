@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Order_ implements Serializable {
+public class ClientOrder implements Serializable {
 	
 	// Variables
 	
@@ -27,7 +27,7 @@ public class Order_ implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	public Client client;
 	
-	public Vector<Order_position> order_position = new Vector<Order_position>();
+	public Vector<OrderPosition> orderPosition = new Vector<OrderPosition>();
 
 	// Functions
 	

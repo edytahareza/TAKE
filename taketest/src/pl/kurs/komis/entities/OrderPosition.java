@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-public class Order_position implements Serializable {
+public class OrderPosition implements Serializable {
 	
 	// Variables
 	
@@ -15,7 +15,7 @@ public class Order_position implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@ManyToOne(fetch=FetchType.EAGER)
-	public Order_ order;
+	public ClientOrder clientOrder;
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)

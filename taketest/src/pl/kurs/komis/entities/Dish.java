@@ -26,8 +26,8 @@ public class Dish implements Serializable {
 	@Column(name = "type")
 	private String type;
 	
-	@Column(name = "order_position")
-	public Vector<Order_position> order_position = new Vector<Order_position>();
+	@Column(name = "orderPosition")
+	public Vector<OrderPosition> orderPosition = new Vector<OrderPosition>();
 	
 	@Column(name = "ingredient")
 	public Vector<Ingredient> ingredient = new Vector<Ingredient>();

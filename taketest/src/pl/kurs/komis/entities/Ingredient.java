@@ -27,7 +27,7 @@ public class Ingredient implements Serializable {
 	private int type;	//czemu tu byl int? nie ma byc string?
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	public Dish _dish;
+	public Dish dish;
 
 	// Functions
 	

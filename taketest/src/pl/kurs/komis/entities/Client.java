@@ -22,7 +22,7 @@ public class Client implements Serializable {
 	
 	private String mail;
 	
-	public Vector<Order_> order_ = new Vector<Order_>();
+	public Vector<ClientOrder> clientOrder = new Vector<ClientOrder>();
 
 	// Functions
 	
