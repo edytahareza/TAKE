@@ -8,7 +8,7 @@ import pl.kurs.komis.entities.*;
 
 public class Test {
 public static void main(String[] args) {
-	EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("komis");
+	EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("restauracja");
 	EntityManager manager = managerFactory.createEntityManager(); 
 	manager.getTransaction().begin();
 	
@@ -36,10 +36,10 @@ public static void main(String[] args) {
 	
 	// tworzenie dania
 	
-	Dish pomidorowa = new Dish();
-	Dish ziemniaczki = new Dish();
+	//Dish pomidorowa = new Dish();
+	//Dish ziemniaczki = new Dish();
 	//pomidorowa.setId(12);
-	pomidorowa.setType(new String("Pomidorowa zupa"));
+	//pomidorowa.setType(new String("Pomidorowa zupa"));
 	
 	// tworzenie skladnika
 	
@@ -48,26 +48,26 @@ public static void main(String[] args) {
 	pomidor.setName(new String("Pomidor"));
 	pomidor.setType(new Integer(3));
 	
-	Ingredient kapusta = new Ingredient();
-	kapusta.setName(new String("kapusta"));
+	//Ingredient kapusta = new Ingredient();
+	//kapusta.setName(new String("kapusta"));
 	
 	// dodawanie tego wszystkiego do siebie
 	
-	pomidor.dish = pomidorowa;
+	//pomidor.dish = pomidorowa;
 	
 	
-	pomidorowa.ingredient.addElement(kapusta);
-	pozycjaZamowienia.dish = pomidorowa;
+	//pomidorowa.ingredient.addElement(kapusta);
+	//pozycjaZamowienia.dish = pomidorowa;
 	pozycjaZamowienia.clientOrder = zamowienie;
 	czeslaw.clientOrder.addElement(zamowienie);
 	
 	// Zapis w bazie
 
 	manager.persist(pomidor);
-	manager.persist(ziemniaczki);
-	manager.persist(pomidorowa);
-	manager.persist(zamowienie);
-	manager.persist(pozycjaZamowienia);
+	//manager.persist(ziemniaczki);
+	//manager.persist(pomidorowa);
+	//manager.persist(zamowienie);
+	//manager.persist(pozycjaZamowienia);
 	//manager.persist(czeslaw);
 	
 	
