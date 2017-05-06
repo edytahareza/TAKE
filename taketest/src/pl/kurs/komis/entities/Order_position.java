@@ -1,20 +1,39 @@
 package pl.kurs.komis.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
-public class Order_position {
-	private Integer orderQuantity;
+public class Order_position implements Serializable {
+	
+	// Variables
+	
+	@Column(name="quantity")
+	private Integer quantity;
+	
 	@Id
-	public Order order;
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@ManyToOne(fetch=FetchType.EAGER)
+	public Order_ order;
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@ManyToOne(fetch=FetchType.EAGER)
 	public Dish dish;
 
-	public Integer getOrderQuantity() {
-		return this.orderQuantity;
+	// Functions
+	
+	public Integer getQuantity() {
+		return this.quantity;
 	}
 
-	public void setOrderQuantity(Integer aOrderQuantity) {
-		this.orderQuantity = aOrderQuantity;
+	public void setQuantity(Integer aQuantity) {
+		this.quantity = aQuantity;
+	}
+	
+	@Override
+	public String toString() {
+		return getQuantity()+" lubie placki";
 	}
 }

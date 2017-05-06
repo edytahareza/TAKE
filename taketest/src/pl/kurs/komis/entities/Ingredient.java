@@ -1,15 +1,36 @@
 package pl.kurs.komis.entities;
 
-import javax.persistence.*;
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Ingredient {
+public class Ingredient implements Serializable {
+	
+	// Variables
+	
 	@Id
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	@Column(name = "id")
 	private int id;
+	
+	@Column(name = "name")
 	private String name;
-	private int type;
-	public Dish dish;
+	
+	@Column(name = "type")
+	private int type;	//czemu tu byl int? nie ma byc string?
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	public Dish _dish;
 
+	// Functions
+	
 	public int getId() {
 		return this.id;
 	}
@@ -32,5 +53,10 @@ public class Ingredient {
 
 	public void setType(int aType) {
 		this.type = aType;
+	}
+	
+	@Override
+	public String toString() {
+		return getId()+" "+getName()+" "+getType();
 	}
 }

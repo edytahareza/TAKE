@@ -1,21 +1,31 @@
 package pl.kurs.komis.entities;
 
+import java.io.Serializable;
 import java.util.Vector;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-public class Client {
+public class Client implements Serializable {
+	
+	// Variables
+	
 	@Id
 	private int id;
+	
 	private String name;
+	
 	private String surname;
+	
 	private String phone;
+	
 	private String mail;
 	
-	@OneToMany
-	public Vector<Order> _order = new Vector<Order>();
+	public Vector<Order_> order_ = new Vector<Order_>();
 
+	// Functions
+	
 	public int getId() {
 		return this.id;
 	}
@@ -54,5 +64,10 @@ public class Client {
 
 	public void setMail(String aMail) {
 		this.mail = aMail;
+	}
+	
+	@Override
+	public String toString() {
+		return getId()+" "+getName()+" "+getSurname();
 	}
 }
