@@ -1,36 +1,33 @@
 package pl.kurs.komis.entities;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Vector;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Dish implements Serializable {
+public class Order_ implements Serializable {
 	
 	// Variables
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
-	@Column(name = "id")
+	@Column(name="id")
 	private int id;
 	
-	@Column(name = "price")
-	private BigDecimal price;
+	@Column(name="price")
+	private int price;
+
+	@ManyToOne(fetch=FetchType.EAGER)
+	public Client client;
 	
-	@Column(name = "type")
-	private String type;
-	
-	@Column(name = "order_position")
 	public Vector<Order_position> order_position = new Vector<Order_position>();
-	
-	@Column(name = "ingredient")
-	public Vector<Ingredient> ingredient = new Vector<Ingredient>();
 
 	// Functions
 	
@@ -42,24 +39,16 @@ public class Dish implements Serializable {
 		this.id = aId;
 	}
 
-	public BigDecimal getPrice() {
+	public int getPrice() {
 		return this.price;
 	}
 
-	public void setPrice(BigDecimal aPrice) {
+	public void setPrice(int aPrice) {
 		this.price = aPrice;
-	}
-
-	public String getType() {
-		return this.type;
-	}
-
-	public void setType(String aType) {
-		this.type = aType;
 	}
 	
 	@Override
 	public String toString() {
-		return getId()+" "+getPrice()+" "+getType();
+		return getId()+" "+getPrice()+" Client no: "+client.getId();
 	}
 }
