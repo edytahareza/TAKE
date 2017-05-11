@@ -10,27 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+
 @Entity
 public class Ingredient implements Serializable {
-	
-	// Variables
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.TABLE)
 	@Column(name = "id")
-	private int id;
-	
+	int id;
 	@Column(name = "name")
-	private String name;
-	
+	String name;
 	@Column(name = "type")
-	private int type;	//czemu tu byl int? nie ma byc string?
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	public Dish dish;
+	int type;	
 
-	// Functions
-	
 	public int getId() {
 		return this.id;
 	}

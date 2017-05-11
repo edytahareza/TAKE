@@ -6,9 +6,7 @@ import javax.persistence.*;
 
 @Entity
 public class OrderPosition implements Serializable {
-	
-	// Variables
-	
+
 	@Column(name="quantity")
 	private Integer quantity;
 	
@@ -22,8 +20,6 @@ public class OrderPosition implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	public Dish dish;
 
-	// Functions
-	
 	public Integer getQuantity() {
 		return this.quantity;
 	}

@@ -1,28 +1,32 @@
 package pl.kurs.komis.entities;
 
 import java.io.Serializable;
-import java.util.Vector;
-
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Client implements Serializable {
 	
 	// Variables
-	
 	@Id
-	private int id;
+	@GeneratedValue(strategy=GenerationType.TABLE)
+	int id;
+	String name;
+	String surname;
+	String phone;
+	String mail;
+
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	List<ClientOrder> eqs = new ArrayList<ClientOrder>();
 	
-	private String name;
-	
-	private String surname;
-	
-	private String phone;
-	
-	private String mail;
-	
-	public Vector<ClientOrder> clientOrder = new Vector<ClientOrder>();
+	//public Vector<ClientOrder> clientOrder = new Vector<ClientOrder>();
 
 	// Functions
 	
