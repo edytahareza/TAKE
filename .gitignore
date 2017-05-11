@@ -1,0 +1,5 @@
+# ignorowane
+taketest/bin
+taketest/.settings
+taketest/.classpath
+taketest/.project
