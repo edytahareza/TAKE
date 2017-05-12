@@ -3,3 +3,15 @@ taketest/.settings
 taketest/.classpath
 taketest/.project
 
+# Compiled class file
+*.class
+
+# global
+*.classpath
+*.project
+
+# package
+*.war
+
+# preference files
+*.prefs
