@@ -14,37 +14,37 @@ public class RestaurantEJB {
 	EntityManager manager;
 
 	
-	public void create(Car car) {
+	public void create(Ingredient ing) {
 		System.out.println("Creating car!");
-		manager.persist(car);
+		manager.persist(ing);
 	}
 
-	public void delete(int idc) {
-		Car car = manager.find(Car.class, idc);
-		manager.remove(car);
+	public void delete(int idi) {
+		Ingredient ing = manager.find(Ingredient.class, idi);
+		manager.remove(ing);
 	}
 
-	public List<Car> findByMake(String make) {
-		Query q = manager.createQuery("select c from Car c where c.make like :make");
-		q.setParameter("make", make);
+	public List<Ingredient> findByName(String name) {
+		Query q = manager.createQuery("select c from Ingredient ing where ing.name like :name");
+		q.setParameter("name", name);//make
 		@SuppressWarnings("unchecked")
-		List<Car> lista =q.getResultList();
-		return lista;
+		List<Ingredient> ing_list =q.getResultList();
+		return ing_list;
 	}
 
-	public Car find(int idc) {
-		return manager.find(Car.class, idc);
+	public Ingredient find(int idi) {
+		return manager.find(Ingredient.class, idi);
 	}
 
-	public List<Car> get() {
-		Query q = manager.createQuery("select c from Car c");
+	public List<Ingredient> get() {
+		Query q = manager.createQuery("select * from Ingredient ing");
 		@SuppressWarnings("unchecked")
-		List<Car> list = q.getResultList();
-		return list;
+		List<Ingredient> ing_list = q.getResultList();
+		return ing_list;
 	}
 
-	public void update(Car car) {
-		car = manager.merge(car);
+	public void update(Ingredient ingredient) {
+		ingredient = manager.merge(ingredient);
 	}
 
 	
