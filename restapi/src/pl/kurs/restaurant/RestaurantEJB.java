@@ -37,9 +37,10 @@ public class RestaurantEJB {
 	}
 
 	public List<Ingredient> get() {
-		Query q = manager.createQuery("select * from Ingredient ing");
+		Query q = manager.createQuery("select ing from Ingredient ing;");
 		@SuppressWarnings("unchecked")
 		List<Ingredient> ing_list = q.getResultList();
+		System.out.println("Query q: "+q.toString()+", ing_list: "+ing_list.toString());
 		return ing_list;
 	}
 

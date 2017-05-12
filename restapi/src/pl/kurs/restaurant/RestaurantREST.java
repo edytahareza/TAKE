@@ -11,11 +11,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 @Path("/restaurant")
-//@Consumes({ "application/json" })
-//@Produces({ "application/json" })
-
-@Consumes({ "application/xml" })
-@Produces({ "application/xml" })
+@Consumes({ "application/json" })
+@Produces({ "application/json" })
 
 public class RestaurantREST implements Restaurant {
 
@@ -44,6 +41,7 @@ public class RestaurantREST implements Restaurant {
 	public Ingredients get() {
 		List<Ingredient> allIngList = bean.get();
 		Ingredients ings = new Ingredients(allIngList);
+		System.out.println("Get function activated, returning all: " + ings.toString());
 		return ings;
 	}
 
