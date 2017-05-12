@@ -9,14 +9,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Ingredients {
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
-	public Ingredients(List<Ingredient> cars) {
+	public Ingredients(List<Ingredient> ingredients) {
 		super();
-		this.ingredients = cars;
+		this.ingredients = ingredients;
 	}
 
 	public Ingredients() {	}
 	
-	public List<Ingredient> getCars() {
+	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
@@ -24,6 +24,13 @@ public class Ingredients {
 		this.ingredients = ingredients;
 	}
 	
-	
+	@Override
+	public String toString() {
+		 String tmp = "";
+		 for ( Ingredient ing : ingredients) {
+			 tmp += ing.toString() + "\n";
+		 }
+		 return tmp;
+	}
 	
 }
