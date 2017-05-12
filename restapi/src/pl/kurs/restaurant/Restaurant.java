@@ -5,14 +5,14 @@ import javax.ejb.Local;
 @Local
 public interface Restaurant {
 
-	public abstract String create(Car car);
+	public abstract String create(Ingredient ingredient);
 
-	public abstract Car find(int idc);
+	public abstract Ingredient find(int idi);
 
-	public abstract Cars get();
+	public abstract Ingredients get();
 
-	public abstract String update(Car car);
+	public abstract String update(Ingredient ingredient);
 
-	public abstract void delete(int idc);
+	public abstract void delete(int idi);
 
 }

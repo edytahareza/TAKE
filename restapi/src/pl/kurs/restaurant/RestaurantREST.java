@@ -10,7 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-@Path("/komis")
+@Path("/restaurant")
 //@Consumes({ "application/json" })
 //@Produces({ "application/json" })
 
@@ -25,47 +25,47 @@ public class RestaurantREST implements Restaurant {
 	@Override
 	@POST
 	@Path("/create")
-	public String create(Car car) {
-		bean.create(car);
-		return "car created!";
+	public String create(Ingredient ingredient) {
+		bean.create(ingredient);
+		return "ingredient created!";
 	}
 
 	@Override
 	@GET
-	@Path("/find/{idc}")
-	public Car find(@PathParam("idc") int idc) {
-		Car car = bean.find(idc);
-		return car;
+	@Path("/find/{idi}")
+	public Ingredient find(@PathParam("idi") int idi) {
+		Ingredient ingredient = bean.find(idi);
+		return ingredient;
 	}
 
 	@Override
 	@GET
 	@Path("/get")
-	public Cars get() {
-		List<Car> lcars = bean.get();
-		Cars cars = new Cars(lcars);
-		return cars;
+	public Ingredients get() {
+		List<Ingredient> allIngList = bean.get();
+		Ingredients ings = new Ingredients(allIngList);
+		return ings;
 	}
 
 	@Override
 	@POST
 	@Path("/update")
-	public String update(Car car) {
+	public String update(Ingredient ing) {
 		try {
-			bean.update(car);
-			return "car updated!";
+			bean.update(ing);
+			return "Ingredient updated!";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "car not updated :(";
+			return "Ingredient not updated :(";
 		}
 	}
 
 
 	@Override
 	@GET
-	@Path("/delete/{idc}")
-	public void delete(@PathParam("idc") int idc) {
-		bean.delete(idc);
+	@Path("/delete/{idi}")
+	public void delete(@PathParam("idi") int idi) {
+		bean.delete(idi);
 	}
 
 

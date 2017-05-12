@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-   <persistence-unit name="komis">
-      <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-      <properties>
-          <property name="hibernate.hbm2ddl.auto" value="update"/>
-      </properties>
-   </persistence-unit>
- </persistence>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+ version="2.1">
+
+ <persistence-unit name="restauracja">
+  <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+  <properties>
+   <property name="javax.persistence.jdbc.driver"
+    value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
+   <property name="javax.persistence.jdbc.url"
+    value="jdbc:sqlserver://localhost\MSSQL2K14:1433;databaseName=RestaurantDB;integratedSecurity=true;"></property>
+   <property name="hibernate.hbm2ddl.auto" value="create" />
+   <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+   <property name="show_sql" value="true" />
+  </properties>
+ </persistence-unit>
+</persistence>
