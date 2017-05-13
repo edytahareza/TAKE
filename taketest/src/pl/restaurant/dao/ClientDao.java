@@ -3,6 +3,8 @@ package pl.restaurant.dao;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.persistence.Query;
+import javax.transaction.Transactional;
 
 import pl.restaurant.entities.Client;
 
@@ -14,8 +16,10 @@ public class ClientDao extends AbstractDao<Client> {
 	}
 
 	@Override
+	@Transactional
 	public List<Client> list() {
-		return null;
+		 Query query = manager.createQuery("SELECT c FROM Client c");
+		 return query.getResultList();
 	}
 
 }
