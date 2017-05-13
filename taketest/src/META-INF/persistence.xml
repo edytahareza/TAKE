@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
- version="2.1">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                                 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
 
- <persistence-unit name="restauracja">
-  <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-  <properties>
-   <property name="javax.persistence.jdbc.driver"
-    value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
-   <property name="javax.persistence.jdbc.url"
-    value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=RestaurantDB;integratedSecurity=true;"></property>
-   <property name="hibernate.hbm2ddl.auto" value="create" />
-   <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
-   <property name="show_sql" value="true" />
-  </properties>
- </persistence-unit>
+<!-- 	<persistence-unit name="restauracja">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<properties>
+			<property name="javax.persistence.jdbc.driver"
+				value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:sqlserver://localhost\SQLExpress:1433;databaseName=Restaurant;integratedSecurity=true;"></property>
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+			<property name="show_sql" value="true" />
+		</properties>
+	</persistence-unit> -->
+	
+	  <persistence-unit name="restauracja">
+	    <jta-data-source>java:/java:jboss/datasources/restaurant</jta-data-source>
+	    <properties>
+	      <property name="hibernate.hbm2ddl.auto" value="update"/>
+	      <property name="hibernate.show_sql" value="false"/>
+	      <property name="hibernate.transaction.flush_before_completion" value="true"/>
+	    </properties>
+	  </persistence-unit>
 </persistence>

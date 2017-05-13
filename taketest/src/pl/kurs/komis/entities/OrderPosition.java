@@ -11,12 +11,12 @@ public class OrderPosition implements Serializable {
 	private Integer quantity;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@ManyToOne(fetch=FetchType.EAGER)
 	public ClientOrder clientOrder;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@ManyToOne(fetch=FetchType.EAGER)
 	public Dish dish;
 

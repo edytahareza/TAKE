@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Ingredient implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	int id;
 	@Column(name = "name")

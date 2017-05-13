@@ -14,19 +14,16 @@ import javax.persistence.OneToMany;
 @Entity
 public class Client implements Serializable {
 	
-	// Variables
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	int id;
 	String name;
 	String surname;
 	String phone;
 	String mail;
 
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
 	List<ClientOrder> eqs = new ArrayList<ClientOrder>();
-	
-	//public Vector<ClientOrder> clientOrder = new Vector<ClientOrder>();
 
 	// Functions
 	

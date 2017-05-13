@@ -18,7 +18,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class ClientOrder implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
 	int id;
 	@Column(name="price")

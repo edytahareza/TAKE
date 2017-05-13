@@ -17,23 +17,27 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Dish implements Serializable {
+	
 	@Id
-	@GeneratedValue(strategy=GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	int id;
+	
 	@Column(name = "name")
 	String name;
+	
 	@Column(name = "price")
 	BigDecimal price;
+	
 	@Column(name = "type")
 	String type;
 	
 	@Column(name = "orderPosition")
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	List<OrderPosition> orderPositions = new ArrayList<OrderPosition>();
 	
 	@Column(name = "ingredient")
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	
