@@ -1,4 +1,4 @@
-package pl.kurs.komis.entities;
+package pl.restaurant.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;

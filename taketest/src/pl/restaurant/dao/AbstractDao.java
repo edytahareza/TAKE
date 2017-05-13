@@ -10,7 +10,7 @@ public abstract class AbstractDao<T> {
 
     private final Class<T> classType;
     
-	@PersistenceContext(name="restauracja")
+	@PersistenceContext(name="restaurant")
 	protected EntityManager manager;
 	
 	protected AbstractDao (Class<T> classType) {

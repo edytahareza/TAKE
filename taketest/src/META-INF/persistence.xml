@@ -18,11 +18,11 @@
 		</properties>
 	</persistence-unit> -->
 	
-	  <persistence-unit name="restauracja">
+	  <persistence-unit name="restaurant">
 	    <jta-data-source>java:/java:jboss/datasources/restaurant</jta-data-source>
 	    <properties>
 	      <property name="hibernate.hbm2ddl.auto" value="update"/>
-	      <property name="hibernate.show_sql" value="false"/>
+	      <property name="hibernate.show_sql" value="true"/>
 	      <property name="hibernate.transaction.flush_before_completion" value="true"/>
 	    </properties>
 	  </persistence-unit>

@@ -7,8 +7,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import pl.kurs.komis.entities.Client;
 import pl.restaurant.dao.ClientDao;
+import pl.restaurant.entities.Client;
 
 @Path("/client")
 @Produces("application/json")
