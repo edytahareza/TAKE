@@ -68,7 +68,7 @@ public class Dish implements Serializable {
 	}
 
 	public void setName(String aName) {
-		this.type = aName;
+		this.name = aName;
 	}
 
 	public List<Ingredient> getIngredients() {
