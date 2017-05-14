@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,7 +16,7 @@ import pl.restaurant.entities.Client;
 
 @Path("/client")
 @Produces("application/json")
-@Consumes("application/json")
+
 @Stateless
 public class ClientResource {
 	
@@ -23,17 +24,11 @@ public class ClientResource {
 	@EJB
 	private ClientDao clientDao;
 	
-    @GET
+    @POST
     @Path("/createClient")
-    public String createClient() {
-		Client czeslaw = new Client();
-		czeslaw.setName(new String("REST"));
-		czeslaw.setMail(new String("test@rofl.rofl"));
-		czeslaw.setSurname(new String("restdziala"));
-		
-		clientDao.save(czeslaw);
-		
-		return "Added client";
+    public Client createClient(Client client) {	
+		clientDao.save(client);	
+		return client;
     }
     
     @GET
@@ -50,4 +45,5 @@ public class ClientResource {
     public List<Client> getAll() {
     	return clientDao.list();
     }
+
 }

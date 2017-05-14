@@ -17,8 +17,10 @@ public class Ingredient implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	int id;
+	
 	@Column(name = "name")
 	String name;
+	
 	@Column(name = "type")
 	int type;	
 

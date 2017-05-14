@@ -4,16 +4,16 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Dish implements Serializable {
@@ -32,12 +32,10 @@ public class Dish implements Serializable {
 	@Column(name = "type")
 	String type;
 	
-	@Column(name = "orderPosition")
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-	List<OrderPosition> orderPositions = new ArrayList<OrderPosition>();
-	
-	@Column(name = "ingredient")
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "Dish_Ingredient", 
+		joinColumns = @JoinColumn(name = "dish_id"), 
+		inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
 	List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	
@@ -71,14 +69,6 @@ public class Dish implements Serializable {
 
 	public void setName(String aName) {
 		this.type = aName;
-	}
-	
-	public List<OrderPosition> getOrderPositions() {
-		return orderPositions;
-	}
-
-	public void setOrderPositions(List<OrderPosition> orderPositions) {
-		this.orderPositions = orderPositions;
 	}
 
 	public List<Ingredient> getIngredients() {
