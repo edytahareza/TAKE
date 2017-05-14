@@ -42,7 +42,7 @@ public class DishResource {
     public String removeDish(@PathParam("id") int dishId) {
     	Dish dishToRemove = dishDao.getById(dishId);
 		dishDao.delete(dishToRemove);
-		return "Removed client by id";
+		return "Removed dish by id";
     }
     
     @GET

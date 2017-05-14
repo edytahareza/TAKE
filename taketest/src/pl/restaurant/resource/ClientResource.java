@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,6 +14,8 @@ import javax.ws.rs.Produces;
 
 import pl.restaurant.dao.ClientDao;
 import pl.restaurant.entities.Client;
+import pl.restaurant.entities.Dish;
+import pl.restaurant.entities.Ingredient;
 
 @Path("/client")
 @Produces("application/json")
@@ -20,7 +23,6 @@ import pl.restaurant.entities.Client;
 @Stateless
 public class ClientResource {
 	
-
 	@EJB
 	private ClientDao clientDao;
 	
@@ -31,6 +33,13 @@ public class ClientResource {
 		return client;
     }
     
+    @POST
+    @Path("/")
+    public Client createClientPOST(Client client) {
+		clientDao.save(client);
+		return client;
+    }
+      
     @GET
     @Path("/removeClient/{id}")
     public String removeClient(@PathParam("id") int clientId) {
@@ -39,6 +48,13 @@ public class ClientResource {
 		return "Removed client by id";
     }
     
+    @DELETE
+    @Path("/{id}")
+    public String removeClientPOST(@PathParam("id") int clientId) {
+    	 Client  clientToRemove = clientDao.getById(clientId);
+		clientDao.delete(clientToRemove);
+		return "Removed client by id";
+    }
    
     @GET
     @Path("/Clients")
