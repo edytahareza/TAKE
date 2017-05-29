@@ -63,8 +63,13 @@ public class Dish {
 		return type;
 	}
 
+<<<<<<< HEAD
 	public void setType(String type) {
 		this.type = type;
+=======
+	public void setName(String aName) {
+		this.name = aName;
+>>>>>>> ddac5e6c85153e3df59337c966f562b19773e89b
 	}
 
 	public List<Ingredient> getIngredients() {

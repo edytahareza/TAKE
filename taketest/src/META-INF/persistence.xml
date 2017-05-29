@@ -11,8 +11,8 @@
 			<property name="javax.persistence.jdbc.driver"
 				value="com.microsoft.sqlserver.jdbc.SQLServerDriver"></property>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:sqlserver://localhost\SQLExpress:1433;databaseName=Restaurant;integratedSecurity=true;"></property>
-			<property name="hibernate.hbm2ddl.auto" value="create" />
+				value="jdbc:sqlserver://localhost\MSSQLSERVER:1433;databaseName=RestaurantDB;integratedSecurity=true;"></property>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="show_sql" value="true" />
 		</properties>
