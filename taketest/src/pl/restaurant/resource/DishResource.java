@@ -29,6 +29,18 @@ public class DishResource {
 	@EJB
 	private DishDao dishDao;
 	
+    @GET
+    @Path("/{id}")
+    public Dish getDishById(@PathParam("id") int dishId) {
+    	return dishDao.getById(dishId);
+    }
+   
+    @GET
+    @Path("/")
+    public List<Dish> getAll() {
+    	return dishDao.list();
+    }
+    
     @POST
     @Path("/")
     public Dish createDish(DishDto dishDto) {
@@ -39,14 +51,9 @@ public class DishResource {
     
     @DELETE
     @Path("/{id}")
-    public String removeDish(@PathParam("id") int dishId) {
+    public void removeDish(@PathParam("id") int dishId) {
     	Dish dishToRemove = dishDao.getById(dishId);
 		dishDao.delete(dishToRemove);
-		return "Removed dish by id";
-    }
-    
-    @GET
-    public List<Dish> getAll() {
-    	return dishDao.list();
     }
 }
+

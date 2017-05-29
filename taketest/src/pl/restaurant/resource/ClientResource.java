@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -14,52 +13,39 @@ import javax.ws.rs.Produces;
 
 import pl.restaurant.dao.ClientDao;
 import pl.restaurant.entities.Client;
-import pl.restaurant.entities.Dish;
-import pl.restaurant.entities.Ingredient;
 
 @Path("/client")
 @Produces("application/json")
-
 @Stateless
 public class ClientResource {
 	
 	@EJB
 	private ClientDao clientDao;
 	
-    @POST
-    @Path("/createClient")
-    public Client createClient(Client client) {	
-		clientDao.save(client);	
-		return client;
+    @GET
+    @Path("/{id}")
+    public Client getClientById(@PathParam("id") int clientId) {
+    	return clientDao.getById(clientId);
+    }
+   
+    @GET
+    @Path("/")
+    public List<Client> getAll() {
+    	return clientDao.list();
     }
     
     @POST
     @Path("/")
-    public Client createClientPOST(Client client) {
+    public Client createClient(Client client) {
 		clientDao.save(client);
 		return client;
     }
       
-    @GET
-    @Path("/removeClient/{id}")
-    public String removeClient(@PathParam("id") int clientId) {
-		Client clientToRemove = clientDao.getById(clientId);
-		clientDao.delete(clientToRemove);
-		return "Removed client by id";
-    }
-    
     @DELETE
     @Path("/{id}")
-    public String removeClientPOST(@PathParam("id") int clientId) {
-    	 Client  clientToRemove = clientDao.getById(clientId);
+    public void removeClient(@PathParam("id") int clientId) {
+		Client clientToRemove = clientDao.getById(clientId);
 		clientDao.delete(clientToRemove);
-		return "Removed client by id";
-    }
-   
-    @GET
-    @Path("/Clients")
-    public List<Client> getAll() {
-    	return clientDao.list();
     }
 
 }

@@ -13,12 +13,12 @@ import pl.restaurant.entities.Dish;
 import pl.restaurant.entities.Ingredient;
 
 @Stateless
-public class DishMapper /*implements Mapper<Dish, DishDto>*/ {
+public class DishMapper implements Mapper<Dish, DishDto> {
 
 	@EJB
 	private IngredientDao ingredientDao;
 	
-/*	@Override*/
+	@Override
 	public DishDto getDto(Dish entity) {
 		DishDto dto = new DishDto();
 		
@@ -33,7 +33,7 @@ public class DishMapper /*implements Mapper<Dish, DishDto>*/ {
 		return dto;
 	}
 
-/*	@Override*/
+	@Override
 	public Dish getEntity(DishDto dto) {
 		Dish dish = new Dish();
 		

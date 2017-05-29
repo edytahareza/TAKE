@@ -1,35 +1,47 @@
 package pl.restaurant.entities;
 
-import java.io.Serializable;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class OrderPosition implements Serializable {
+public class OrderPosition {
 
-	@Column(name="quantity")
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	@Column(name = "quantity")
 	private Integer quantity;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@ManyToOne(fetch=FetchType.EAGER)
-	public ClientOrder clientOrder;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@ManyToOne(fetch=FetchType.EAGER)
-	public Dish dish;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Dish dish;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public Integer getQuantity() {
-		return this.quantity;
+		return quantity;
 	}
 
-	public void setQuantity(Integer aQuantity) {
-		this.quantity = aQuantity;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
-	
-	@Override
-	public String toString() {
-		return getQuantity()+" lubie placki";
+
+	public Dish getDish() {
+		return dish;
 	}
+
+	public void setDish(Dish dish) {
+		this.dish = dish;
+	}
+
 }

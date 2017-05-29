@@ -1,11 +1,10 @@
 package pl.restaurant.entities;
 
-import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,32 +13,38 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class ClientOrder implements Serializable {
+public class ClientOrder {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="id")
-	int id;
+	private Integer id;
 	
-	@Column(name = "price")
-	int price;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	private List<OrderPosition> orderPosition = new ArrayList<OrderPosition>();
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public List<OrderPosition> getOrderPosition() {
+		return orderPosition;
+	}
+
+	public void setOrderPosition(List<OrderPosition> orderPosition) {
+		this.orderPosition = orderPosition;
+	}
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
-	List<OrderPosition> orderPosition = new ArrayList<OrderPosition>();
-
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int aId) {
-		this.id = aId;
-	}
-
-	public int getPrice() {
-		return this.price;
-	}
-
-	public void setPrice(int aPrice) {
-		this.price = aPrice;
+	public BigDecimal getPrice() {
+		BigDecimal price = new BigDecimal(0);
+		
+		getOrderPosition().forEach(orderPosition -> {
+			BigDecimal quantity = new BigDecimal(orderPosition.getQuantity());
+			price.add(orderPosition.getDish().getPrice().multiply(quantity));
+		});
+		return price;
 	}
 }

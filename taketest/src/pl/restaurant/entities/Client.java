@@ -1,8 +1,8 @@
 package pl.restaurant.entities;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,63 +12,67 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Client implements Serializable {
+public class Client {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	int id;
-	String name;
-	String surname;
-	String phone;
-	String mail;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
-	List<ClientOrder> eqs = new ArrayList<ClientOrder>();
-
-	// Functions
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
-	public int getId() {
-		return this.id;
+	private String name;
+	
+	private String surname;
+	
+	private String phone;
+	
+	private String mail;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+	private List<ClientOrder> eqs = new ArrayList<ClientOrder>();
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(int aId) {
-		this.id = aId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
-	public void setName(String aName) {
-		this.name = aName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getSurname() {
-		return this.surname;
+		return surname;
 	}
 
-	public void setSurname(String aSurname) {
-		this.surname = aSurname;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
 	public String getPhone() {
-		return this.phone;
+		return phone;
 	}
 
-	public void setPhone(String aPhone) {
-		this.phone = aPhone;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getMail() {
-		return this.mail;
+		return mail;
 	}
 
-	public void setMail(String aMail) {
-		this.mail = aMail;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
-	
-	@Override
-	public String toString() {
-		return getId()+" "+getName()+" "+getSurname();
+
+	public List<ClientOrder> getEqs() {
+		return eqs;
+	}
+
+	public void setEqs(List<ClientOrder> eqs) {
+		this.eqs = eqs;
 	}
 }

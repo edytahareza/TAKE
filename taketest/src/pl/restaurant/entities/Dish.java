@@ -1,6 +1,5 @@
 package pl.restaurant.entities;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,59 +15,56 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Dish implements Serializable {
+public class Dish {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	int id;
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
 	@Column(name = "name")
-	String name;
+	private String name;
 	
 	@Column(name = "price")
-	BigDecimal price;
+	private BigDecimal price;
 	
 	@Column(name = "type")
-	String type;
+	private String type;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "Dish_Ingredient", 
 		joinColumns = @JoinColumn(name = "dish_id"), 
 		inverseJoinColumns = @JoinColumn(name = "ingredient_id"))
-	List<Ingredient> ingredients = new ArrayList<Ingredient>();
+	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
-	
-	public int getId() {
-		return this.id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(int aId) {
-		this.id = aId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public BigDecimal getPrice() {
-		return this.price;
+		return price;
 	}
 
-	public void setPrice(BigDecimal aPrice) {
-		this.price = aPrice;
+	public void setPrice(BigDecimal price) {
+		this.price = price;
 	}
 
 	public String getType() {
-		return this.type;
+		return type;
 	}
 
-	public void setType(String aType) {
-		this.type = aType;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String aName) {
-		this.type = aName;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public List<Ingredient> getIngredients() {
@@ -79,10 +75,4 @@ public class Dish implements Serializable {
 		this.ingredients = ingredients;
 	}
 
-	@Override
-	public String toString() {
-		return getId()+" "+getPrice()+" "+getType();
-	}
-	
-	
 }

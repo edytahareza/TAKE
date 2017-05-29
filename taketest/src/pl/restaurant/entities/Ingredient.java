@@ -1,55 +1,46 @@
 package pl.restaurant.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 
 @Entity
-public class Ingredient implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	int id;
+public class Ingredient {
+	
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
 	
 	@Column(name = "name")
-	String name;
+	private String name;
 	
 	@Column(name = "type")
-	int type;	
+	private Integer type;
 
-	public int getId() {
-		return this.id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(int aId) {
-		this.id = aId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
-	public void setName(String aName) {
-		this.name = aName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getType() {
-		return this.type;
+	public Integer getType() {
+		return type;
 	}
 
-	public void setType(int aType) {
-		this.type = aType;
-	}
-	
-	@Override
-	public String toString() {
-		return getId()+" "+getName()+" "+getType();
-	}
+	public void setType(Integer type) {
+		this.type = type;
+	}	
+
 }
